@@ -1,10 +1,13 @@
 require 'sinatra'
+require "./lib/juego.rb"
 
 get '/' do
-
-	#@@juego = Juego.new(rand(10),rand(10),"+")
-  @@juego = Juego.new(2,2,"+")
-  	  
+	@num1 = rand(10)
+	@num2 = rand(10)
+	@operador = "+"	
+	
+	@@juego = Juego.new(@num1, @num2, @operador)
+	
 	erb :formulario
 
 end
@@ -15,10 +18,10 @@ post "/resultado" do
 
 	@esvalido = @@juego.validarResultado(@res)
 
-	if @esvalido
+	if @esvalido == true
 		"ok"
 	else
-		"Burro"
+		"Burro"		
 	end
 	
 end
