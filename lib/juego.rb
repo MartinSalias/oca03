@@ -20,12 +20,15 @@ class Juego
 		@res = resultado
 		if @nivel == 1	
 			@res1 = @num1 + @num2 
-		else
-			@res1 = @num1 - @num2 
+		elsif @nivel == 2
+				@res1 = @num1 - @num2 
+		elsif @nivel == 3
+				@res1 = @num1 * @num2
 		end
 
-		if @cantOperaciones == 5
+		if @cantOperaciones == 1
 			@nivel += 1
+			@cantOperaciones = 0
 		end
 
 		if @res1 == @res

@@ -37,11 +37,15 @@ post "/siguiente" do
 	@num2 = rand(10)
 	if @@juego.getNivel == 1
 		@operador = "+"
-	else
+	elsif @@juego.getNivel == 2
 		@operador = "-"
+	elsif @@juego.getNivel == 3
+		@operador = "*"
 	end
 
-	#@@juego = Juego.new(@num1, @num2, @operador)
+	if @@juego.getNivel == 4
+	erb :winner
+	else 
 	@vidas = @@juego.getVidas
 	@nivel = @@juego.getNivel
 	if @vidas == 0
@@ -50,6 +54,7 @@ post "/siguiente" do
 		@@juego.setNum1(@num1)
 		@@juego.setNum2(@num2)
 		erb :formulario
+	end
 	end
 	
 end
