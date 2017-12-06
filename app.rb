@@ -5,7 +5,7 @@ get '/' do
 	@num1 = rand(10)
 	@num2 = rand(10)
 	@operador = "+"	
-	
+
 	@@juego = Juego.new(@num1, @num2, @operador)
 	
 	erb :formulario
@@ -19,10 +19,13 @@ post "/resultado" do
 	@esvalido = @@juego.validarResultado(@res)
 
 	if @esvalido == true
-		"ok"
+		"Ok"
 	else
-		"Burro"		
+		"Burro"
+#		@vidas -= 1
+
 	end
+#	@vidas
 	
 end
 
