@@ -1,4 +1,5 @@
 require 'sinatra'
+require "./lib/juego.rb"
 
 get '/' do
 
