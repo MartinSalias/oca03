@@ -19,10 +19,18 @@ post "/resultado" do
 	@esvalido = @@juego.validarResultado(@res)
 
 	if @esvalido == true
-		"ok"
+		erb :correcto
 	else
-		"Burro"		
+		erb :incorrecto		
 	end
 	
 end
 
+
+post "/siguiente" do
+	@num1 = rand(10)
+	@num2 = rand(10)
+	@operador = "+"
+	@@juego = Juego.new(@num1, @num2, @operador)
+	erb :formulario
+end
