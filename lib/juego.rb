@@ -17,14 +17,28 @@ class Juego
 		@res1 = @num1 + @num2 
 
 		if @res1 == @res
-			return true
 			@validos += 1
 			if @validos == 3
 				@vidas += 1
 				@validos = 0
-			end 
+			end
+			return true 
 		else
+			@vidas -= 1
 			return false
 		end
 	end
+
+	def getVidas
+		return @vidas
+	end
+
+	def setNum1(num1)
+		@num1 = num1.to_i
+	end
+
+	def setNum2(num2)
+		@num2 = num2.to_i
+	end
+
 end
