@@ -4,10 +4,12 @@ require "./lib/juego.rb"
 get '/' do
 	@num1 = rand(10)
 	@num2 = rand(10)
+
 	@operador = "+"	
 
 	@@juego = Juego.new(@num1, @num2, @operador)
 	@vidas = @@juego.getVidas
+	@nivel = @@juego.getNivel
 	erb :formulario
 
 end
@@ -15,6 +17,9 @@ end
 post "/resultado" do
 
 	@res = params["resultado"].to_i
+
+	@vidas = @@juego.getVidas
+	@nivel = @@juego.getNivel
 
 	@esvalido = @@juego.validarResultado(@res)
 
@@ -30,9 +35,15 @@ end
 post "/siguiente" do
 	@num1 = rand(10)
 	@num2 = rand(10)
-	@operador = "+"
+	if @@juego.getNivel == 1
+		@operador = "+"
+	else
+		@operador = "-"
+	end
+
 	#@@juego = Juego.new(@num1, @num2, @operador)
 	@vidas = @@juego.getVidas
+	@nivel = @@juego.getNivel
 	if @vidas == 0
 		erb :perdio
 	else
@@ -50,5 +61,6 @@ post "/volveraempezar" do
 
 	@@juego = Juego.new(@num1, @num2, @operador)
 	@vidas = @@juego.getVidas
+	@nivel = @@juego.getNivel
 	erb :formulario
 end
