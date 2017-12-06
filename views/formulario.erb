@@ -1,17 +1,36 @@
-Vidas: <b><%=@vidas%></b>
+<table>
+	<tr>
+		<td>
+			Vidas: <b><%=@vidas%></b>
+		</td>
+	</tr>
+</table>
+<table>
+	<tr>
+		<td>
+			<b><%=@num1%></b>
+		</td>
+		<td>
+			<b><%=@operador%></b>
+		</td>
+		<td>
+			<b><%=@num2%></b>
+		</td>
+		<td>
+			=
+		</td>
+		<td>
+			<form method="post" action="/resultado">
 
-Numero 1: <b><%=@num1%></b>
-
-Operacion: <b><%=@operador%></b>
-
-Numero 2: <b><%=@num2%></b>
+				<input type="text" name="resultado"/>
 
 
-<form method="post" action="/resultado">
-Resultado:
-	<input type="text" name="resultado" />
 
 
-	<input type="submit" value="resultado" />
-</form>
 
+
+				<input type="submit" value="resultado" />
+			</form>
+		</td>
+	</tr>
+</table>
